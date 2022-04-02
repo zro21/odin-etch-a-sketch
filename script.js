@@ -1,4 +1,8 @@
 
+function randomColor() {
+  let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  return randomColor;
+  }
 
 const container = document.querySelector('#container');
 
@@ -11,7 +15,8 @@ for (let i = 0; i < 255; i++) {
 let squares = document.querySelectorAll('.square');
 for (let square of squares) {
   square.addEventListener('click', () => {
-    square.style.backgroundColor = 'black';
+    let randomcolor = randomColor();
+    square.style.backgroundColor = `#${randomcolor}`;
   })
 }
 
@@ -21,7 +26,11 @@ btnClear.addEventListener('click', () => {
     container.removeChild(square);
   }
 
-  let grid = prompt('Enter a number for the squares per side');
+  let grid;
+  do {
+    grid = prompt('Enter a number for the squares per side');
+  } while (grid > 100);
+
   let width = 960 / grid;
 
   for (let i = 0; i < grid * grid - 1; i++) {
@@ -33,7 +42,8 @@ btnClear.addEventListener('click', () => {
   squares = document.querySelectorAll('.square');
   for (let square of squares) {
     square.addEventListener('click', () => {
-      square.style.backgroundColor = 'black';
+      let randomcolor = randomColor();
+      square.style.backgroundColor = `#${randomcolor}`;
     })
   }
 })
